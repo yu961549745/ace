@@ -7,6 +7,10 @@ if not exist node_modules\amd-loader (
 node tmlanguage.js ../maple/syntaxes/maple.json
 REM build ACE library
 cd ..
+REM install ACE
+if not exist node_modules (
+    npm install
+)
 node Makefile.dryice.js
 REM open test page
 start maple/maple.html
