@@ -1,18 +1,19 @@
 :: make files for maple highlight
 cd ../tool
-:: install amd-loader library
 if not exist node_modules/amd-loader (
+    :: install amd-loader library
     npm install amd-loader
 )
 node tmlanguage.js ../maple/syntaxes/maple.json
+:: add snippets
+cd ../maple
+node mkSnippets.js
 :: build ACE library
 cd ..
-:: install ACE
 if not exist node_modules (
+    :: install ACE
     npm install
 )
 node Makefile.dryice.js
-:: add snippets
-node maple/mkSnippets.js >build/src/snippets/maple.js
 :: open test page
 start maple/maple.html

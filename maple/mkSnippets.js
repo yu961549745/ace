@@ -1,4 +1,3 @@
-console.log(process.argv);
 var snippets = {
     "if": {
         "prefix": "if",
@@ -96,30 +95,34 @@ var snippets = {
     "define": {
         "prefix": "$ifndef",
         "body": [
-            "\\\\$ifndef $1",
-            "\\\\$define $1",
+            "\\$ifndef $1",
+            "\\$define $1",
             "$2",
-            "\\\\$endif"
+            "\\$endif"
         ],
         "description": "ifndef - define - endif"
     }
 };
 
-var tmp = "define(\"ace/snippets/maple\", [\"require\", \"exports\", \"module\"], function(require, exports, module) {\n\
-    \"use strict\";\n\
-    exports.snippetText = \"@snippets\";\n\
-    exports.scope = \"maple\";\n\
-});";
 var s = "";
 var append = function(str) {
-    s = s + str + "\n";
+    s += str + "\n";
 };
-append("## Maple Snippets\\n\\");
+append("## Maple Snippets\n\\");
 for (x in snippets) {
-    append("# " + snippets[x].description + "\\n\\");
-    append("snippet " + snippets[x].prefix + "\\n\\");
+    append("# " + snippets[x].description);
+    append("snippet " + snippets[x].prefix);
     for (y in snippets[x].body) {
-        append("\t" + snippets[x].body[y] + "\\n\\");
+        append("\t" + snippets[x].body[y]);
     }
 }
-console.log(tmp.replace("@snippets", s));
+var fs = require("fs");
+fs.writeFile("../lib/ace/snippets/maple.snippets", s);
+fs.writeFile("../lib/ace/snippets/maple.js", 'define(function(require, exports, module) {\n\
+"use strict";\n\
+\n\
+exports.snippetText = require("../requirejs/text!./maple.snippets");\n\
+exports.scope = "maple";\n\
+\n\
+});\n\
+');

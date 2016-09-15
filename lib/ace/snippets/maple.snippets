@@ -1,0 +1,61 @@
+## Maple Snippets
+\
+# if  then  end if
+snippet if
+	if ${1} then
+		${2}
+	end if;
+# elif  then
+snippet elif
+	elif ${1} then
+		${2}
+# else
+snippet else
+	else
+		${1}
+# proc end proc
+snippet proc
+	proc($1)
+		$2
+	end proc:
+# module option end module
+snippet module
+	module()
+		option $1;
+		$2
+	end module:
+# for do end do
+snippet for
+	for $1 do
+		$2
+	end do;
+# while do end do
+snippet while
+	while $1 do
+		$2
+	end do;
+# do end do
+snippet do
+	do
+		$1
+	end do;
+# use in end use
+snippet use
+	use $1 in
+		$2
+	end use;
+# try catch finally end try
+snippet try
+	try
+		$1
+	catch $2:
+		$3
+	finally
+		$4
+	end try;
+# ifndef - define - endif
+snippet $ifndef
+	\$ifndef $1
+	\$define $1
+	$2
+	\$endif
