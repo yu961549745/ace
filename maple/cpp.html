@@ -23,23 +23,7 @@
 
 <body>
 
-    <pre id="editor">
-(*
-    Test file for highlight
-*)
-`&+`:=proc(x::set,y::set)
-    return x union y;
-end proc:               # keywords
-$include "utils.mpl"    # preprocessor
-print(`&+`);            # quoted name
-print("123");           # string
-print('x+y');           # unvaluated expression
-type(x,uneval);         # type name
-fun:=proc(x::uneval)    # parameter modifier
-    option inline;      # proc and module options
-    print(procname);    # language variable
-    return true;        # language constants
-end proc:</pre>
+    <pre id="editor"></pre>
 
     <!-- load ace -->
     <script src="../build/src/ace.js"></script>
@@ -49,7 +33,7 @@ end proc:</pre>
         // trigger extension
         ace.require("ace/ext/language_tools");
         var editor = ace.edit("editor");
-        editor.session.setMode("ace/mode/maple");
+        editor.session.setMode("ace/mode/c_cpp");
         editor.setTheme("ace/theme/monokai");
         // enable autocompletion and snippets
         editor.setOptions({
