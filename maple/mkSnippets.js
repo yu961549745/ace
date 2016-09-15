@@ -95,7 +95,7 @@ var snippets = {
     "define": {
         "prefix": "$ifndef",
         "body": [
-            "\\$ifndef $1",
+            "\\$ifndef $1", // add escape for $ifndef etc.
             "\\$define $1",
             "$2",
             "\\$endif"
