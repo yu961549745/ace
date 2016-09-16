@@ -1,5 +1,9 @@
 :: make files for maple highlight
 cd ../tool
+if not exist node_modules (
+    :: install tool
+    npm install
+)
 if not exist node_modules/amd-loader (
     :: install amd-loader library
     npm install amd-loader
